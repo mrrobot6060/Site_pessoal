@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letras de Rap</title>
+  <style>
+    body {
+      background-color: black;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+    }
+    
+    h1 {
+      margin-top: 50px;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #111;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+    
+    textarea {
+      width: 100%;
+      height: 300px;
+      padding: 10px;
+      margin-bottom: 10px;
+      resize: vertical;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    
+    #output {
+      text-align: left;
+      white-space: pre-wrap;
+      font-size: 16px;
+      overflow-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <h1>Letras de Rap</h1>
+  
+  <div class="container">
+    <h2>Escolha uma letra</h2>
+    <select id="songSelect" onchange="updateOutput()">
+      <option value="">Selecione uma música</option>
+      <option value="1">Música 1</option>
+      <option value="2">Música 2</option>
+      <option value="3">Música 3</option>
+    </select>
+    
+    <h2>Letra Atualizada</h2>
+    <div id="output"></div>
+    
+    <button onclick="copyOutput()">Copiar Letra</button>
+  </div>
+  
+  <script>
+    const songSelect = document.getElementById("songSelect");
+    const outputElement = document.getElementById("output");
+    
+    songSelect.addEventListener("change", function() {
+      const selectedSong = songSelect.value;
+      if (selectedSong === "1") {
+        outputElement.textContent = `Letra da Música 1:
+
+A Voz do Gueto
+
+Título: A Voz do Gueto
+
+Verso 1:
+No gueto é onde eu cresci,
+Onde o sonho nasce e morre aqui.
+Caminhando nas ruas escuras,
+Onde a esperança se mistura com as agruras.
+
+Refrão:
+A voz do gueto ecoa na cidade,
+Gritando por justiça e igualdade.
+Não podemos nos calar, vamos lutar,
+Mostrar que no gueto também temos nosso lugar.
+
+Verso 2:
+O sistema nos empurra pra baixo,
+Ignora nossa dor, nosso cansaço.
+Mas nós resistimos, não desistimos,
+No gueto a nossa voz não se omite.
+
+Essa é a música "A Voz do Gueto" em uma versão curta. Você pode adicionar mais versos e desenvolver a letra de acordo com o seu gosto e estilo musical.`;
+      } else if (selectedSong === "2") {
+        outputElement.textContent = `Letra da Música 2:
+
+
+Título: Dinheiro e Luxo
+
+Verso 1:
+Vou falar sobre dinheiro e luxo,
+Onde a ostentação é o fluxo.
+Carros importados e mansões,
+É assim que vivem os ricaços, os patrões.
+
+Refrão:
+Dinheiro e luxo, é o que eles têm,
+Enquanto nós, pobres, só queremos o pão nosso de cada dia também.
+Mas a sociedade nos ensina a sonhar,
+Com um estilo de vida que só os ricos podem alcançar.
+
+Verso 2:
+Enquanto eles esbanjam o que não precisam,
+Nós lutamos pra sobreviver, não desistimos.
+O sistema nos diz para ficar quietos,
+Mas não aceitamos ser apenas objetos.
+
+Essa é a música "Dinheiro e Luxo" em uma versão curta. Você pode expandir a letra e adicionar mais versos para desenvolver a mensagem que deseja transmitir.`;
+      } else if (selectedSong === "3") {
+        outputElement.textContent = `Letra da Música 3:
+
+
+Título: Grito de Liberdade
+
+Verso 1:
+Eu vou cantar um grito de liberdade,
+Em meio a uma sociedade que não nos vê com piedade.
+Querem nos silenciar, nos manter no chão,
+Mas não permitiremos, vamos lutar com paixão.
+
+Refrão:
+Grito de liberdade, ecoa no ar,
+Não nos calaremos, vamos nos levantar.
+Somos fortes, unidos vamos caminhar,
+Quebrando as correntes, ninguém vai nos parar.
+
+Verso 2:
+Nossas vozes se unem, um clamor ressoa,
+Pela igualdade, pela justiça que coroa.
+Não aceitaremos a opressão, a discriminação,
+Vamos lutar por um mundo de transformação.
+
+Essa é a música "Grito de Liberdade" em uma versão curta. Fique à vontade para expandir a letra e adicionar mais versos para expressar sua mensagem de forma completa.`;
+      } else {
+        outputElement.textContent = "";
+      }
+    });
+    
+    function copyOutput() {
+      const range = document.createRange();
+      range.selectNode(outputElement);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+           document.execCommand("copy");
+      window.getSelection().removeAllRanges();
+      alert("A letra foi copiada para a área de transferência.");
+    }
+  </script>
+</body>
+</html>
+
+     

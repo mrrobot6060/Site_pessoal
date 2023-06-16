@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Adivinhação</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    
+    h1 {
+      margin-top: 50px;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    p {
+      margin-bottom: 10px;
+    }
+    
+    input {
+      padding: 5px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jogo de Adivinhação</h1>
+  
+  <div class="container">
+    <p>Estou pensando em um número entre 1 e 10. Tente adivinhar!</p>
+    <p>Digite seu palpite:</p>
+    <input type="number" id="guess" min="1" max="10">
+    <button onclick="checkGuess()">Verificar</button>
+    <p id="result"></p>
+  </div>
+  
+  <script>
+    const secretNumber = Math.floor(Math.random() * 10) + 1;
+    const resultElement = document.getElementById("result");
+    
+    function checkGuess() {
+      const guessElement = document.getElementById("guess");
+      const guess = parseInt(guessElement.value);
+      
+      if (guess === secretNumber) {
+        resultElement.textContent = "Parabéns! Você acertou o número.";
+      } else if (guess > secretNumber) {
+        resultElement.textContent = "Tente um número menor.";
+      } else if (guess < secretNumber) {
+        resultElement.textContent = "Tente um número maior.";
+      }
+      
+      resultElement.style.display = "block";
+    }
+  </script>
+</body>
+</html>

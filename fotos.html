@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>fotos</title>
+    <style>
+        /* CSS interno */
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .slideshow {
+            width: 400px;
+            height: 600px;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slideshow img {
+            width: auto;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            border-radius: 10px; /* Adiciona o arredondamento de cantos */
+        }
+
+        .slideshow img.active {
+            opacity: 1;
+        }
+
+        .slideshow-controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .slideshow-controls button {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 18px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow">
+        <img src="istockphoto-624265498-1024x1024.jpg" alt="Image 1" class="active">
+        <img src="images (10).jpeg" alt="Image 2">
+        <img src="images (11).jpeg" alt="Image 3">
+    </div>
+
+    <div class="slideshow-controls">
+        <button onclick="previousSlide()">Anterior</button>
+        <button onclick="nextSlide()">Próximo</button>
+    </div>
+
+    <script>
+        // JavaScript para controlar o slideshow
+        var slideIndex = 0;
+        var slides = document.getElementsByClassName("slideshow")[0].getElementsByTagName("img");
+
+        function showSlide(n) {
+            if (n >= slides.length) {
+                slideIndex = 0;
+            } else if (n < 0) {
+                slideIndex = slides.length - 1;
+            }
+
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+
+            slides[slideIndex].classList.add("active");
+        }
+
+        function previousSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        // Iniciar o slideshow
+        showSlide(slideIndex);
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Intro</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .intro-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .logo {
+      font-family: Arial, sans-serif;
+      font-size: 96px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #FFF;
+      opacity: 1;
+      animation: textAnimation 4s ease-in-out;
+      animation-fill-mode: forwards;
+    }
+
+    .logo span {
+      position: relative;
+    }
+
+    .logo span:before {
+      content: attr(data-letter);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      color: #FFF;
+      transition: opacity 1s;
+    }
+
+    .start-button {
+      margin-top: 50px;
+      padding: 20px 50px;
+      background-color: red;
+      border: 2px solid #FFF;
+      color: #FFF;
+      font-size: 24px;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes textAnimation {
+      0% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="intro-container">
+    <h1 class="logo">
+      <span data-letter="B">B</span>
+      <span data-letter="E">E</span>
+      <span data-letter="M">M</span>
+      <span data-letter="V">V</span>
+      <span data-letter="I">I</span>
+      <span data-letter="N">N</span>
+      <span data-letter="D">D</span>
+      <span data-letter="O">O</span>
+    </h1>
+    <a href="menu.html" class="start-button">Iniciar</a>
+  </div>
+
+  <script>
+    var logoLetters = document.querySelectorAll('.logo span');
+    var startButton = document.querySelector('.start-button');
+
+    logoLetters.forEach(function(letter, index) {
+      setTimeout(function() {
+        letter.style.opacity = '0';
+      }, 2000 + index * 200);
+    });
+
+    startButton.addEventListener('click', function() {
+      window.location.href = 'menu.html';
+    });
+  </script>
+</body>
+</html>
